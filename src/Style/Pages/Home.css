@@ -1,0 +1,74 @@
+.Home__article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Home__article__figure {
+    margin-top: 10px;
+    width: 100%;
+    height: 200px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Home__article__figure__img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.Home__article__figure__figcaption {
+    position: absolute;
+    font-size: clamp(1.5rem, 0.4286rem + 2.8571vw, 3rem);
+    font-weight: bold;
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Home__article__p {
+    font-size: 1.5rem;
+    margin-top: 5px;
+    padding: 2px;
+}
+
+.Home__article__p__span {
+    font-size: 1.5rem;
+}
+
+.Home__aside {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Home__aside__div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    border: 3px solid #d8a515;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.Home__aside__div__logo {
+    font-size: clamp(2rem, 1rem + 4vw, 10rem);
+}
+
+.Home__aside__div__p {
+    width: 70%;
+    font-size: clamp(1rem, 0.4286rem + 2.8571vw, 2.5rem);
+}
+.Home__aside__div__p__h2 {
+    font-size: clamp(1rem, 0.4286rem + 2.8571vw, 2.5rem);
+}

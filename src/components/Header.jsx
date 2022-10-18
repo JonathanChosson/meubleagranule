@@ -4,14 +4,16 @@ import "../Style/Components/Header.css"
 const Header = () => {
     function toggleNav() {
         console.log("click")
+        const navMenu = document.querySelector(".Header__nav")
         const navItem = document.querySelector(".Header__nav__ul")
         navItem.classList.toggle("visible")
+        navMenu.classList.toggle("background")
     }
     return (
         <div className="Header">
             <h1 className="Header__h1">
-                <span className="Rouge">Meuble</span>a
-                <span className="Rouge">Granule</span>.fr
+                e-
+                <span className="Rouge Header__h1__span">granule</span>.fr
             </h1>
             <nav className="Header__nav">
                 <i
