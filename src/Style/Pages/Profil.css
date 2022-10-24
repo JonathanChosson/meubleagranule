@@ -1,6 +1,27 @@
 .Profil__article {
-    margin-top: 15px;
+    margin-top: 10px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.Profil__article__div__form {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-flow: row wrap;
+}
+
+.Profil__article__div__form__fieldset {
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column wrap;
+}
+
+.Profil__article__div__form__fieldset legend {
+    font-weight: bold;
 }

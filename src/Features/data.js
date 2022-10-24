@@ -28,6 +28,8 @@ export default function dataReducer(state = initialState, action) {
             case AJOUTDATA: {
                 draft.data = []
                 draft.data.push(action.payload)
+                // localStorage.clear()
+                // localStorage.setItem("profil", JSON.stringify(action.payload))
                 return
             }
             default:

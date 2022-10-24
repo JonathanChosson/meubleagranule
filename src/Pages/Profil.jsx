@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { Fragment, useState } from "react"
 import Banniere from "../components/Banniere"
 import Header from "../components/Header"
 import "../Style/Pages/Profil.css"
@@ -11,8 +11,9 @@ import { selectData } from "../Utils/selector"
 
 const Profil = () => {
     const profilData = useSelector(selectData)
-    console.log(profilData.length)
+
     const dispatch = useDispatch()
+
     const [modalOpenCreate, setModalOpenCreate] = useState(false)
     const [modalOpenError, setModalOpenError] = useState(false)
 
@@ -22,21 +23,40 @@ const Profil = () => {
     const closeModalError = () => setModalOpenError(false)
 
     let profil
-    if (profilData.length > 0) {
+    if (localStorage.length > 0) {
+        profil = { ...JSON.parse(localStorage.profil) }
+    } else if (profilData.length > 0) {
         profil = { ...profilData[0] }
     } else {
         profil = {
             mail: "",
+            codePostal: "",
+            poele: {},
         }
     }
 
     const [newProfile, setNewProfile] = useState(profil)
 
     function setData(key, value) {
-        setNewProfile({
-            ...newProfile,
-            [key]: value,
-        })
+        console.log(value)
+        switch (key) {
+            case "poele":
+                setNewProfile({
+                    ...newProfile,
+                    poele: {
+                        ...newProfile.poele,
+                        ...value,
+                    },
+                })
+                break
+
+            default:
+                setNewProfile({
+                    ...newProfile,
+                    [key]: value,
+                })
+                break
+        }
     }
 
     /**
@@ -49,8 +69,23 @@ const Profil = () => {
             case "mail":
                 setData("mail", e.target.value)
                 break
+            case "cp":
+                setData("codePostal", e.target.value)
+                break
+            case "marque":
+                let valueMarque = { marque: e.target.value }
+                setData("poele", valueMarque)
+                break
+            case "modele":
+                let valueModele = { modele: e.target.value }
+                setData("poele", valueModele)
+                break
+            case "dernierRamonage":
+                let valueDernierRamonage = { dernierRamonage: e.target.value }
+                setData("poele", valueDernierRamonage)
+                break
             default:
-                console.error(new Error("Whoops, something bad happened"))
+                console.error(new Error("Erreur"))
         }
     }
 
@@ -59,9 +94,30 @@ const Profil = () => {
         console.log()
         if (newProfile.mail) {
             dispatch(addData(newProfile))
+            console.log(newProfile)
             openModalCreate()
         } else {
             openModalError()
+        }
+    }
+
+    function calculRamonage() {
+        const date = new Date()
+        if (
+            date.getFullYear() -
+                newProfile.poele.dernierRamonage.split("-")[0] ===
+            0
+        ) {
+            return (
+                12 +
+                (newProfile.poele.dernierRamonage.split("-")[1] -
+                    (date.getMonth() + 1))
+            )
+        } else {
+            return (
+                newProfile.poele.dernierRamonage.split("-")[1] -
+                (date.getMonth() + 1)
+            )
         }
     }
 
@@ -74,14 +130,59 @@ const Profil = () => {
                     <form className="Profil__article__div__form" action="#">
                         <fieldset className="Profil__article__div__form__fieldset">
                             <legend>
-                                <i className="fa-solid fa-user"></i> Mon profil
+                                <i className="fa-solid fa-user Rouge"></i> Mon
+                                profil
                             </legend>
                             <Input
                                 id={"mail"}
                                 desc={"Adresse Mail"}
                                 type={"mail"}
+                                placeholder={newProfile.mail}
                                 onchange={handleChange}
                             />
+                            <Input
+                                id={"cp"}
+                                desc={"Code Postal"}
+                                type={"numbers"}
+                                placeholder={newProfile.codePostal}
+                                onchange={handleChange}
+                            />
+                        </fieldset>
+                        <fieldset className="Profil__article__div__form__fieldset">
+                            <legend>
+                                <i className="fa-solid fa-fire-burner Rouge"></i>{" "}
+                                Mon poêle
+                            </legend>
+                            <Input
+                                id={"marque"}
+                                desc={"Marque"}
+                                type={"text"}
+                                placeholder={newProfile.poele.marque}
+                                onchange={handleChange}
+                            />
+                            <Input
+                                id={"modele"}
+                                desc={"Modèle"}
+                                type={"text"}
+                                placeholder={newProfile.poele.modele}
+                                onchange={handleChange}
+                            />
+                            <Input
+                                id={"dernierRamonage"}
+                                desc={"Dernier ramonage"}
+                                type={"date"}
+                                placeholder={newProfile.poele.dernierRamonage}
+                                onchange={handleChange}
+                            />
+
+                            {newProfile.poele.dernierRamonage ? (
+                                <Fragment>
+                                    <p>Prochain Ramonage</p>
+                                    <p>{calculRamonage()} mois</p>
+                                </Fragment>
+                            ) : (
+                                ""
+                            )}
                         </fieldset>
                     </form>
                     <button
