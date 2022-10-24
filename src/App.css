@@ -14,3 +14,12 @@
 .Rouge {
     color: #d84315;
 }
+
+#dialogDesc {
+    margin: 10px !important;
+}
+
+.modal {
+    width: 40% !important;
+    text-align: center;
+}
