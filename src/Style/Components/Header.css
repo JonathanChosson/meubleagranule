@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid black;
 }
 .Header__h1,
 .Header__h1__span {
@@ -35,7 +34,7 @@
 .Header__nav__hamburger {
     font-size: 1.6rem;
     display: none;
-    margin: 10px;
+    margin: 15px;
 }
 
 @media screen and (max-width: 768px) {
@@ -69,4 +68,9 @@
 
 .background {
     background-color: #d8a515;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
 }

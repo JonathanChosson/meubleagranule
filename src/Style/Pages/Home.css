@@ -56,9 +56,9 @@
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    border: 3px solid #d8a515;
+    /* border: 3px solid #d8a515; */
     padding: 10px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 .Home__aside__div__logo {
@@ -67,7 +67,8 @@
 
 .Home__aside__div__p {
     width: 70%;
-    font-size: clamp(1rem, 0.4286rem + 2.8571vw, 2.5rem);
+    /* font-size: clamp(1rem, 0.4286rem + 2.8571vw, 2.5rem); */
+    font-size: 1rem;
 }
 .Home__aside__div__p__h2 {
     font-size: clamp(1rem, 0.4286rem + 2.8571vw, 2.5rem);

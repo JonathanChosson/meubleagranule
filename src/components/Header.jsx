@@ -1,9 +1,9 @@
 import React from "react"
 import "../Style/Components/Header.css"
+import { Link } from "react-router-dom"
 
 const Header = () => {
     function toggleNav() {
-        console.log("click")
         const navMenu = document.querySelector(".Header__nav")
         const navItem = document.querySelector(".Header__nav__ul")
         navItem.classList.toggle("visible")
@@ -25,9 +25,11 @@ const Header = () => {
                         <i className="fa-solid fa-table-columns"></i> Tableau de
                         bord
                     </li>
-                    <li className="Header__nav__ul__li">
-                        <i className="fa-solid fa-user"></i> Profil
-                    </li>
+                    <Link className="link" to={"/profil"}>
+                        <li className="Header__nav__ul__li">
+                            <i className="fa-solid fa-user"></i> Profil
+                        </li>
+                    </Link>
                     <li className="Header__nav__ul__li">
                         <i className="fa-solid fa-right-from-bracket"></i>{" "}
                         Déconnexion
