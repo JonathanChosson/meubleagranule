@@ -1,4 +1,5 @@
 import React from "react"
+import Banniere from "../components/Banniere"
 import Header from "../components/Header"
 import "../Style/Pages/Home.css"
 
@@ -6,18 +7,7 @@ const Home = () => {
     return (
         <div className="Home">
             <Header />
-            <article className="Home__article">
-                <figure className="Home__article__figure">
-                    <img
-                        className="Home__article__figure__img"
-                        src="./image/fond.jpeg"
-                        alt="Chauffage granule"
-                    />
-                    {/* <figcaption className="Home__article__figure__figcaption">
-                        Gerer vos granulés
-                    </figcaption> */}
-                </figure>
-            </article>
+            <Banniere />
             <article className="Home__article">
                 <p className="Home__article__p">
                     e-

@@ -11,10 +11,12 @@ const Header = () => {
     }
     return (
         <div className="Header">
-            <h1 className="Header__h1">
-                e-
-                <span className="Rouge Header__h1__span">granule</span>.fr
-            </h1>
+            <Link className="link" to={"/"}>
+                <h1 className="Header__h1">
+                    e-
+                    <span className="Rouge Header__h1__span">granule</span>.fr
+                </h1>
+            </Link>
             <nav className="Header__nav">
                 <i
                     className="fa-solid fa-bars Header__nav__hamburger"
