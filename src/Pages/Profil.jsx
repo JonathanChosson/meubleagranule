@@ -38,7 +38,6 @@ const Profil = () => {
     const [newProfile, setNewProfile] = useState(profil)
 
     function setData(key, value) {
-        console.log(value)
         switch (key) {
             case "poele":
                 setNewProfile({
@@ -114,10 +113,22 @@ const Profil = () => {
                     (date.getMonth() + 1))
             )
         } else {
-            return (
+            const mois =
                 newProfile.poele.dernierRamonage.split("-")[1] -
                 (date.getMonth() + 1)
-            )
+            let annee = 0
+            if (
+                date.getFullYear() -
+                    newProfile.poele.dernierRamonage.split("-")[0] >
+                1
+            ) {
+                annee =
+                    12 *
+                    (date.getFullYear() -
+                        newProfile.poele.dernierRamonage.split("-")[0])
+            }
+
+            return mois + -annee
         }
     }
 
@@ -177,8 +188,22 @@ const Profil = () => {
 
                             {newProfile.poele.dernierRamonage ? (
                                 <Fragment>
-                                    <p>Prochain Ramonage</p>
-                                    <p>{calculRamonage()} mois</p>
+                                    <p>Prochain Ramonage dans :</p>
+                                    {/* <p>{calculRamonage()} mois</p> */}
+                                    {calculRamonage() > 3 ? (
+                                        <p className="Vert">
+                                            {calculRamonage()} mois
+                                        </p>
+                                    ) : calculRamonage() < 3 &&
+                                      calculRamonage() >= 0 ? (
+                                        <p className="Orange">
+                                            {calculRamonage()} mois
+                                        </p>
+                                    ) : (
+                                        <p className="Rouge">
+                                            {calculRamonage()} mois
+                                        </p>
+                                    )}
                                 </Fragment>
                             ) : (
                                 ""
