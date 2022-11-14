@@ -32,6 +32,7 @@ const Profil = () => {
             mail: "",
             codePostal: "",
             poele: {},
+            stock: {},
         }
     }
 
@@ -44,6 +45,16 @@ const Profil = () => {
                     ...newProfile,
                     poele: {
                         ...newProfile.poele,
+                        ...value,
+                    },
+                })
+                break
+
+            case "stock":
+                setNewProfile({
+                    ...newProfile,
+                    stock: {
+                        ...newProfile.stock,
                         ...value,
                     },
                 })
@@ -79,9 +90,17 @@ const Profil = () => {
                 let valueModele = { modele: e.target.value }
                 setData("poele", valueModele)
                 break
+            case "puissance":
+                let valuePuissance = { puissance: e.target.value }
+                setData("poele", valuePuissance)
+                break
             case "dernierRamonage":
                 let valueDernierRamonage = { dernierRamonage: e.target.value }
                 setData("poele", valueDernierRamonage)
+                break
+            case "stockActuel":
+                let valueStockActuel = { stockActuel: e.target.value }
+                setData("stock", valueStockActuel)
                 break
             default:
                 console.error(new Error("Erreur"))
@@ -90,10 +109,8 @@ const Profil = () => {
 
     function handleSubmit(e) {
         e.preventDefault()
-        console.log()
-        if (newProfile.mail) {
+        if (profil !== newProfile) {
             dispatch(addData(newProfile))
-            console.log(newProfile)
             openModalCreate()
         } else {
             openModalError()
@@ -161,6 +178,19 @@ const Profil = () => {
                         </fieldset>
                         <fieldset className="Profil__article__div__form__fieldset">
                             <legend>
+                                <i className="fa-solid fa-boxes-stacked Rouge"></i>{" "}
+                                Mon stock
+                            </legend>
+                            <Input
+                                id={"stockActuel"}
+                                desc={"Stock Actuel (kg)"}
+                                type={"text"}
+                                placeholder={newProfile.stock.stockActuel}
+                                onchange={handleChange}
+                            />
+                        </fieldset>
+                        <fieldset className="Profil__article__div__form__fieldset">
+                            <legend>
                                 <i className="fa-solid fa-fire-burner Rouge"></i>{" "}
                                 Mon poêle
                             </legend>
@@ -179,6 +209,13 @@ const Profil = () => {
                                 onchange={handleChange}
                             />
                             <Input
+                                id={"puissance"}
+                                desc={"Puissance (kW)"}
+                                type={"text"}
+                                placeholder={newProfile.poele.puissance}
+                                onchange={handleChange}
+                            />
+                            <Input
                                 id={"dernierRamonage"}
                                 desc={"Dernier ramonage"}
                                 type={"date"}
@@ -189,7 +226,6 @@ const Profil = () => {
                             {newProfile.poele.dernierRamonage ? (
                                 <Fragment>
                                     <p>Prochain Ramonage dans :</p>
-                                    {/* <p>{calculRamonage()} mois</p> */}
                                     {calculRamonage() > 3 ? (
                                         <p className="Vert">
                                             {calculRamonage()} mois

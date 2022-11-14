@@ -5,6 +5,10 @@
     align-items: center; */
 }
 
+.Profil__article__div {
+    text-align: center;
+}
+
 .Profil__article__div__form {
     display: flex;
     justify-content: center;
