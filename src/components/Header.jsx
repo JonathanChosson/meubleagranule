@@ -23,10 +23,12 @@ const Header = () => {
                     onClick={toggleNav}
                 ></i>
                 <ul className="Header__nav__ul">
-                    <li className="Header__nav__ul__li">
-                        <i className="fa-solid fa-table-columns"></i> Tableau de
-                        bord
-                    </li>
+                    <Link className="link" to={"/dashboard"}>
+                        <li className="Header__nav__ul__li">
+                            <i className="fa-solid fa-table-columns"></i>{" "}
+                            Tableau de bord
+                        </li>
+                    </Link>
                     <Link className="link" to={"/profil"}>
                         <li className="Header__nav__ul__li">
                             <i className="fa-solid fa-user"></i> Profil

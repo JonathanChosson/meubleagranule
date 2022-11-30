@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from "./Pages/Home"
 import Error from "./Pages/Error"
 import Profil from "./Pages/Profil"
+import Dash from "./Pages/Dash"
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/profil" element={<Profil />} />
+                    <Route path="/dashboard" element={<Dash />} />
                     <Route path="*" element={<Error />} />
                 </Routes>
             </BrowserRouter>

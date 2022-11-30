@@ -1,0 +1,18 @@
+.Dash__noProfil {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+}
+
+.Dash__link {
+    margin: 15px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
