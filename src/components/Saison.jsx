@@ -8,7 +8,7 @@ const Saison = () => {
     return (
         <div className="Saison">
             {profilData.saisonActuelle.dateDebut ? (
-                <p>go pour la date</p>
+                <p>Terminer la saison</p>
             ) : (
                 <p>Pas de date</p>
             )}
