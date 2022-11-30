@@ -9,7 +9,7 @@ import Saison from "../components/Saison"
 
 const Dash = () => {
     const profilData = useSelector(selectData)
-    console.log(profilData.length)
+
     return (
         <div className="Dash">
             <Header />

@@ -33,6 +33,9 @@ const Profil = () => {
             codePostal: "",
             poele: {},
             stock: {},
+            saisonActuelle: {
+                dateDebut: "",
+            },
         }
     }
 
